@@ -1,0 +1,40 @@
+name: FlexiCompute CI
+
+# Запускать при каждом пуше в ветку main или master
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Загружаем код из репозитория
+      - uses: actions/checkout@v3
+
+      # 2. Устанавливаем Java (нужна для работы Flutter)
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      # 3. Устанавливаем Flutter последней стабильной версии
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.x'
+          channel: 'stable'
+
+      # 4. Загружаем зависимости
+      - name: Install dependencies
+        run: flutter pub get
+
+      # 5. Проверяем форматирование кода (опционально, признак хорошего тона)
+      - name: Verify formatting
+        run: dart format --set-exit-if-changed .
+
+      # 6. Запускаем ваши Unit-тесты
+      - name: Run tests
+        run: flutter test
