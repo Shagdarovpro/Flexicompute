@@ -35,7 +35,8 @@ class CalculatorCubit extends Cubit<CalculatorState> {
     try {
       final res = _engine.calculate(state.equation);
       // Форматируем результат: если целое число — убираем .0
-      String formattedResult = res % 1 == 0 ? res.toInt().toString() : res.toString();
+      String formattedResult =
+          res % 1 == 0 ? res.toInt().toString() : res.toString();
       emit(state.copyWith(result: formattedResult));
     } catch (e) {
       emit(state.copyWith(result: "Error"));

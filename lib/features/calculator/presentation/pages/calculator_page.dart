@@ -19,7 +19,7 @@ class CalculatorPage extends StatelessWidget {
               flex: 2,
               child: _buildDisplay(),
             ),
-            
+
             // 2. Сетка кнопок
             Expanded(
               flex: 3,
@@ -79,30 +79,46 @@ class CalculatorPage extends StatelessWidget {
   Widget _buildButtonsGrid(BuildContext context) {
     // Список символов для кнопок в порядке их отображения
     final List<String> buttons = [
-      'AC', '(', ')', '÷',
-      '7', '8', '9', '×',
-      '4', '5', '6', '-',
-      '1', '2', '3', '+',
-      'C', '0', '.', '=',
+      'AC',
+      '(',
+      ')',
+      '÷',
+      '7',
+      '8',
+      '9',
+      '×',
+      '4',
+      '5',
+      '6',
+      '-',
+      '1',
+      '2',
+      '3',
+      '+',
+      'C',
+      '0',
+      '.',
+      '=',
     ];
 
     return GridView.builder(
       padding: const EdgeInsets.all(16),
-      physics: const NeverScrollableScrollPhysics(), // Сетка не должна скроллиться отдельно
+      physics:
+          const NeverScrollableScrollPhysics(), // Сетка не должна скроллиться отдельно
       itemCount: buttons.length,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 4,      // 4 колонки
-        mainAxisSpacing: 12,    // Отступы между строками
-        crossAxisSpacing: 12,   // Отступы между колонками
-        childAspectRatio: 1,    // Квадратные ячейки
+        crossAxisCount: 4, // 4 колонки
+        mainAxisSpacing: 12, // Отступы между строками
+        crossAxisSpacing: 12, // Отступы между колонками
+        childAspectRatio: 1, // Квадратные ячейки
       ),
       itemBuilder: (context, index) {
         final text = buttons[index];
-        
+
         // Логика стилизации Middle-уровня: вычисляем цвета на лету
         Color? bgColor;
         Color txtColor = Colors.white;
-        
+
         if (text == 'AC' || text == 'C') {
           bgColor = Colors.grey[400];
           txtColor = Colors.black;

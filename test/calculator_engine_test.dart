@@ -10,7 +10,8 @@ void main() {
   });
 
   group('CalculatorEngine Tests', () {
-    test('Basic arithmetic (addition, subtraction, multiplication, division)', () {
+    test('Basic arithmetic (addition, subtraction, multiplication, division)',
+        () {
       expect(engine.calculate("10+5"), 15.0);
       expect(engine.calculate("10-5"), 5.0);
       expect(engine.calculate("10*5"), 50.0);

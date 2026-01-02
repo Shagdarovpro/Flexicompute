@@ -23,7 +23,7 @@ class FlexiComputeApp extends StatelessWidget {
     return MaterialApp(
       title: 'FlexiCompute',
       debugShowCheckedModeBanner: false, // Убираем баннер "Debug"
-      
+
       // Настройка темной темы в стиле Middle-проектов
       theme: ThemeData(
         useMaterial3: true,
@@ -35,7 +35,7 @@ class FlexiComputeApp extends StatelessWidget {
           surface: Colors.black,
         ),
       ),
-      
+
       // Главная точка входа с прокидыванием логики (DI)
       home: BlocProvider(
         create: (context) => CalculatorCubit(CalculatorEngine()),

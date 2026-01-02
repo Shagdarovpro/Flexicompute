@@ -1,6 +1,6 @@
 class CalculatorState {
   final String equation; // То, что вводит пользователь
-  final String result;   // Результат вычисления
+  final String result; // Результат вычисления
 
   CalculatorState({
     this.equation = "0",
